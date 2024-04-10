@@ -1,16 +1,16 @@
 import Button from "./Button";
 import ExpenseField from "./ExpenseField";
 export default function ExpenseForm({
+  onSetToggle,
   gasExp,
   onSetGasExp,
   mealsExp,
   onSetMealsExp,
   otherExp,
   onSetOtherExp,
-  onHandleSubmit,
 }) {
   return (
-    <form className="expense-form" onSubmit={onHandleSubmit}>
+    <div className="income">
       <ExpenseField value={gasExp} setValue={onSetGasExp}>
         Gas
       </ExpenseField>
@@ -21,7 +21,7 @@ export default function ExpenseForm({
         Cash
       </ExpenseField>
 
-      <Button>Close</Button>
-    </form>
+      <Button onClick={onSetToggle((e) => !e)}>Close</Button>
+    </div>
   );
 }

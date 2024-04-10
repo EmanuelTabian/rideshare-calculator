@@ -21,13 +21,6 @@ export default function App() {
     income - (commissionPerc * income) / 100 - otherCom - totalExpenses
   );
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    // setFinalIncome(netIncome - totalExpenses);
-    // console.log(finalIncome);
-    setToggle(false);
-  }
-
   function handleReset() {
     setIncome("");
     setToggle("");
@@ -56,13 +49,13 @@ export default function App() {
       />
       {toggle && (
         <ExpenseForm
+          onSetToggle={setToggle}
           gasExp={gasExp}
           onSetGasExp={setGasExp}
           mealsExp={mealsExp}
           onSetMealsExp={setMealsExp}
           otherExp={otherExp}
           onSetOtherExp={setOtherExp}
-          onHandleSubmit={handleSubmit}
         />
       )}
       <Output netIncome={netIncome} />
