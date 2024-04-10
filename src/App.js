@@ -19,9 +19,9 @@ function Logo() {
 }
 function Income() {
   return (
-    <div>
+    <div className="income">
       <CommissionField>Income</CommissionField>
-      <CommissionField>Rideshare company commission</CommissionField>
+      <CommissionField>Rideshare commission</CommissionField>
       <CommissionField>Employer commission</CommissionField>
       <CommissionField>Other</CommissionField>
     </div>
@@ -39,7 +39,7 @@ function CommissionField({ children }) {
 
 function ExpenseForm() {
   return (
-    <form>
+    <form className="expense-form">
       <label>Gas:</label>
       <input type="text" />
       <label>Meals:</label>
@@ -52,8 +52,8 @@ function ExpenseForm() {
 }
 function Output() {
   return (
-    <div>
-      <p>🤑 You have earned 250$ this week!</p>
+    <div className="output">
+      <p className="message">🤑 You have earned 250$ this week!</p>
     </div>
   );
 }
