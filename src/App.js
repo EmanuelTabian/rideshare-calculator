@@ -23,7 +23,7 @@ function Income() {
       <CommissionField>Income</CommissionField>
       <CommissionField>Rideshare commission</CommissionField>
       <CommissionField>Employer commission</CommissionField>
-      <CommissionField>Other</CommissionField>
+      <CommissionField>Other commission</CommissionField>
     </div>
   );
 }
@@ -40,13 +40,19 @@ function CommissionField({ children }) {
 function ExpenseForm() {
   return (
     <form className="expense-form">
-      <label>Gas:</label>
-      <input type="text" />
-      <label>Meals:</label>
-      <input type="text" />
-      <label>Other:</label>
-      <input type="text" />
-      <button>Submit</button>
+      <fieldset>
+        <label>Gas:</label>
+        <input type="text" />
+      </fieldset>
+      <fieldset>
+        <label>Meals:</label>
+        <input type="text" />
+      </fieldset>
+      <fieldset>
+        <label>Other:</label>
+        <input type="text" />
+      </fieldset>
+      <button className="button">Submit</button>
     </form>
   );
 }
