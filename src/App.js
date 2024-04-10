@@ -18,9 +18,9 @@ export default function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setFinalIncome((i) => netIncome - totalExpenses);
-    if (totalExpenses > finalIncome) return;
+    setFinalIncome(netIncome - totalExpenses);
     console.log(finalIncome);
+    setToggle(false);
   }
 
   return (
@@ -78,6 +78,12 @@ function Income({
   function handleToggle() {
     onSetToggle((t) => !t);
   }
+
+  function handleReset() {
+    OnSetIncome("");
+    onSetToggle("");
+  }
+
   return (
     <div className="income">
       <IncomeValue income={income} OnSetIncome={OnSetIncome} />
@@ -90,9 +96,12 @@ function Income({
       <CommissionField trackValue={otherCom} setValue={onSetOtherCom}>
         Other Commission
       </CommissionField>
-      <Button onClick={handleToggle}>
-        {toggle ? "Cancel" : "Other Expenses"}
-      </Button>
+      <div className="buttons-container">
+        <Button onClick={handleToggle}>
+          {toggle ? "Cancel" : " Expenses"}
+        </Button>
+        <Button onClick={handleReset}>Reset</Button>
+      </div>
     </div>
   );
 }
