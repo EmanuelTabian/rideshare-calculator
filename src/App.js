@@ -5,6 +5,9 @@ export default function App() {
   const [rideCom, setRideCom] = useState(25);
   const [emplCom, setEmplCom] = useState("");
   const [otherCom, setOtherCom] = useState("");
+  const [gasExp, setGasExp] = useState("");
+  const [mealsExp, setMealsExp] = useState("");
+  const [otherExp, setOtherExp] = useState("");
 
   const commissionPerc = rideCom + emplCom;
   const netIncome = Math.round(
@@ -26,7 +29,16 @@ export default function App() {
         otherCom={otherCom}
         onSetOtherCom={setOtherCom}
       />
-      {toggle && <ExpenseForm />}
+      {toggle && (
+        <ExpenseForm
+          gasExp={gasExp}
+          onSetGasExp={setGasExp}
+          mealsExp={mealsExp}
+          onSetMealsExp={setMealsExp}
+          otherExp={otherExp}
+          onSetOtherExp={setOtherExp}
+        />
+      )}
       <Output netIncome={netIncome} />
     </div>
   );
@@ -101,28 +113,48 @@ function CommissionField({ children, trackValue, setValue }) {
   );
 }
 
-function ExpenseForm() {
+function ExpenseForm({
+  gasExp,
+  onSetGasExp,
+  mealsExp,
+  onSetMealsExp,
+  otherExp,
+  onSetOtherExp,
+}) {
   function handleSubmit(e) {
     e.preventDefault();
   }
+
   return (
     <form className="expense-form" onSubmit={handleSubmit}>
-      <fieldset>
-        <label>Gas:</label>
-        <input type="number" />
-      </fieldset>
-      <fieldset>
-        <label>Meals:</label>
-        <input type="number" />
-      </fieldset>
-      <fieldset>
-        <label>Other:</label>
-        <input type="number" />
-      </fieldset>
+      <ExpenseField value={gasExp} setValue={onSetGasExp}>
+        Gas
+      </ExpenseField>
+      <ExpenseField value={mealsExp} setValue={onSetMealsExp}>
+        Meals
+      </ExpenseField>
+      <ExpenseField value={otherExp} setValue={onSetOtherExp}>
+        Other
+      </ExpenseField>
+
       <Button>Submit</Button>
     </form>
   );
 }
+
+function ExpenseField({ children, value, setValue }) {
+  return (
+    <fieldset>
+      <label>{children}</label>
+      <input
+        type="number"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </fieldset>
+  );
+}
+
 function Button({ children, onClick }) {
   return (
     <button onClick={onClick} className="button">
