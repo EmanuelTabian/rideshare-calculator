@@ -102,8 +102,11 @@ function CommissionField({ children, trackValue, setValue }) {
 }
 
 function ExpenseForm() {
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
   return (
-    <form className="expense-form">
+    <form className="expense-form" onSubmit={handleSubmit}>
       <fieldset>
         <label>Gas:</label>
         <input type="number" />
