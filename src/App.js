@@ -1,4 +1,9 @@
 import { useState } from "react";
+import Logo from "./components/Logo";
+import Income from "./components/Income";
+import ExpenseForm from "./components/ExpenseForm";
+import Output from "./components/Output";
+
 export default function App() {
   const [toggle, setToggle] = useState(false);
   const [income, setIncome] = useState("");
@@ -8,18 +13,18 @@ export default function App() {
   const [gasExp, setGasExp] = useState("");
   const [mealsExp, setMealsExp] = useState("");
   const [otherExp, setOtherExp] = useState("");
-  const [finalIncome, setFinalIncome] = useState("");
+  // const [finalIncome, setFinalIncome] = useState("");
 
   const commissionPerc = rideCom + emplCom;
-  const netIncome = Math.round(
-    income - (commissionPerc * income) / 100 - otherCom
-  );
   const totalExpenses = Number(gasExp) + Number(mealsExp) + Number(otherExp);
+  const netIncome = Math.round(
+    income - (commissionPerc * income) / 100 - otherCom - totalExpenses
+  );
 
   function handleSubmit(e) {
     e.preventDefault();
-    setFinalIncome(netIncome - totalExpenses);
-    console.log(finalIncome);
+    // setFinalIncome(netIncome - totalExpenses);
+    // console.log(finalIncome);
     setToggle(false);
   }
 
@@ -28,7 +33,7 @@ export default function App() {
       <Logo />
       <Income
         income={income}
-        OnSetIncome={setIncome}
+        onSetIncome={setIncome}
         toggle={toggle}
         onSetToggle={setToggle}
         rideCom={rideCom}
@@ -49,148 +54,7 @@ export default function App() {
           onHandleSubmit={handleSubmit}
         />
       )}
-      <Output netIncome={netIncome} finalIncome={finalIncome} />
-    </div>
-  );
-}
-
-function Logo() {
-  return (
-    <h1 className="logo">
-      <span className="logo-color">RIDESHARE</span>&nbsp;
-      <span>COPILOT</span>
-    </h1>
-  );
-}
-
-function Income({
-  toggle,
-  onSetToggle,
-  income,
-  OnSetIncome,
-  rideCom,
-  onSetRideCom,
-  emplCom,
-  onSetEmplCom,
-  otherCom,
-  onSetOtherCom,
-}) {
-  function handleToggle() {
-    onSetToggle((t) => !t);
-  }
-
-  function handleReset() {
-    OnSetIncome("");
-    onSetToggle("");
-  }
-
-  return (
-    <div className="income">
-      <IncomeValue income={income} OnSetIncome={OnSetIncome} />
-      <CommissionField trackValue={rideCom} setValue={onSetRideCom}>
-        Rideshare commission (%)
-      </CommissionField>
-      <CommissionField trackValue={emplCom} setValue={onSetEmplCom}>
-        Employer commission (%)
-      </CommissionField>
-      <CommissionField trackValue={otherCom} setValue={onSetOtherCom}>
-        Other Commission
-      </CommissionField>
-      {income && (
-        <div>
-          <Button onClick={handleToggle}>
-            {toggle ? "Cancel" : " Expenses"}
-          </Button>
-          <Button onClick={handleReset}>Reset</Button>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function IncomeValue({ income, OnSetIncome }) {
-  return (
-    <div>
-      <span>App Income</span>
-      <input
-        type="number"
-        value={income}
-        onChange={(e) => OnSetIncome(+e.target.value ? +e.target.value : "")}
-      />
-    </div>
-  );
-}
-
-function CommissionField({ children, trackValue, setValue }) {
-  return (
-    <div>
-      <span>{children}</span>
-      <input
-        type="number"
-        value={trackValue}
-        onChange={(e) => setValue(+e.target.value ? +e.target.value : "")}
-      />
-    </div>
-  );
-}
-
-function ExpenseForm({
-  gasExp,
-  onSetGasExp,
-  mealsExp,
-  onSetMealsExp,
-  otherExp,
-  onSetOtherExp,
-  onHandleSubmit,
-}) {
-  return (
-    <form className="expense-form" onSubmit={onHandleSubmit}>
-      <ExpenseField value={gasExp} setValue={onSetGasExp}>
-        Gas
-      </ExpenseField>
-      <ExpenseField value={mealsExp} setValue={onSetMealsExp}>
-        Meals
-      </ExpenseField>
-      <ExpenseField value={otherExp} setValue={onSetOtherExp}>
-        Cash
-      </ExpenseField>
-
-      <Button>Submit</Button>
-    </form>
-  );
-}
-
-function ExpenseField({ children, value, setValue }) {
-  return (
-    <fieldset>
-      <label>{children}</label>
-      <input
-        type="number"
-        value={value}
-        onChange={(e) => setValue(+e.target.value ? +e.target.value : "")}
-      />
-    </fieldset>
-  );
-}
-
-function Button({ children, onClick }) {
-  return (
-    <button onClick={onClick} className="button">
-      {children}
-    </button>
-  );
-}
-
-function Output({ netIncome, finalIncome }) {
-  return (
-    <div className="output">
-      {netIncome ? (
-        <p className="message">
-          🤑 You have earned {finalIncome ? finalIncome : netIncome}$ this week!
-        </p>
-      ) : (
-        <p>😎 Write your income value above!</p>
-      )}
+      <Output netIncome={netIncome} />
     </div>
   );
 }
