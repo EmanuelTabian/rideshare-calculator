@@ -96,7 +96,7 @@ function Income({
       <CommissionField trackValue={otherCom} setValue={onSetOtherCom}>
         Other Commission
       </CommissionField>
-      <div className="buttons-container">
+      <div>
         <Button onClick={handleToggle}>
           {toggle ? "Cancel" : " Expenses"}
         </Button>
@@ -113,7 +113,7 @@ function IncomeValue({ income, OnSetIncome }) {
       <input
         type="number"
         value={income}
-        onChange={(e) => OnSetIncome(+e.target.value)}
+        onChange={(e) => OnSetIncome(+e.target.value ? +e.target.value : "")}
       />
     </div>
   );
@@ -126,7 +126,7 @@ function CommissionField({ children, trackValue, setValue }) {
       <input
         type="number"
         value={trackValue}
-        onChange={(e) => setValue(+e.target.value)}
+        onChange={(e) => setValue(+e.target.value ? +e.target.value : "")}
       />
     </div>
   );
@@ -165,7 +165,7 @@ function ExpenseField({ children, value, setValue }) {
       <input
         type="number"
         value={value}
-        onChange={(e) => setValue(+e.target.value)}
+        onChange={(e) => setValue(+e.target.value ? +e.target.value : "")}
       />
     </fieldset>
   );

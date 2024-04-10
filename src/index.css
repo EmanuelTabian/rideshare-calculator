@@ -17,7 +17,7 @@ html {
 .app {
   margin: 8px;
   max-width: 40em;
-  border: 2px solid var(--color-light-gray);
+  border: 2px solid var(--color-text-secondary);
   border-radius: 16px;
 }
 
@@ -35,7 +35,7 @@ html {
 
 .income,
 .expense-form {
-  padding: 16px;
+  padding: 8px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -47,7 +47,7 @@ html {
   padding: 8px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
@@ -60,9 +60,11 @@ fieldset > input {
   border-radius: 8px;
   border: 1px solid var(--color-light-gray);
   font-size: 1rem;
-  padding: 0 8px;
 }
 
+input {
+  text-align: center;
+}
 .button {
   width: 100px;
   margin: 8px;
@@ -76,7 +78,8 @@ fieldset > input {
   transition: 0.3s;
 }
 
-button:hover {
+button:hover,
+button:active {
   background-color: var(--color-button-hover);
 }
 
