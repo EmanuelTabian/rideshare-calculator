@@ -20,7 +20,7 @@ The app takes a value input and based on it can calculate different percentages 
 
 ## Installation
 
-Access the Ridesharing Copilot link or follow the insturctions.
+Access the deployed static version of the a [Ridesharing Copilot](https://rideshare-copilot.onrender.com/) app or follow the insturctions.
 
 <details><summary><b>Show instructions</b></summary>
 
