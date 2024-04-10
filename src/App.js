@@ -2,9 +2,12 @@ import { useState } from "react";
 export default function App() {
   const [toggle, setToggle] = useState(false);
   const [income, setIncome] = useState("");
-  const [rideCom, setRideCom] = useState("");
+  const [rideCom, setRideCom] = useState(25);
   const [emplCom, setEmplCom] = useState("");
   const [otherCom, setOtherCom] = useState("");
+
+  const commissionPerc = rideCom + emplCom;
+  const netIncome = income - (commissionPerc * income) / 100 - otherCom;
 
   return (
     <div className="app">
@@ -73,7 +76,7 @@ function Income({
 function IncomeValue({ income, OnSetIncome }) {
   return (
     <div>
-      <span>Income</span>
+      <span>App Income</span>
       <input
         type="text"
         value={income}
