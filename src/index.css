@@ -1,1 +1,93 @@
+:root {
+  --color-text-secondary: #34d186;
+  --color-button-hover: #0f7946;
+  --color-light-gray: #bfbfbf;
+}
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.app {
+  margin: 8px;
+  max-width: 40em;
+  border: 2px solid var(--color-light-gray);
+  border-radius: 16px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
+.logo-color {
+  color: var(--color-text-secondary);
+}
+
+.income,
+.expense-form {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.income > div,
+.expense-form > fieldset {
+  padding: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+fieldset {
+  border: none;
+}
+
+div > input,
+fieldset > input {
+  border-radius: 8px;
+  border: 1px solid var(--color-light-gray);
+  font-size: 1rem;
+  padding: 0 8px;
+}
+
+.button {
+  width: 100px;
+  margin: 8px;
+  padding: 8px;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--color-text-secondary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: var(--color-button-hover);
+}
+
+.output {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.output > p {
+  font-size: 1.3rem;
+  font-weight: 550;
+}
