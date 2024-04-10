@@ -1,9 +1,11 @@
+import { useState } from "react";
 export default function App() {
+  const [toggle, setToggle] = useState(false);
   return (
     <div className="app">
       <Logo />
-      <Income />
-      <ExpenseForm />
+      <Income toggle={toggle} onSetToggle={setToggle} />
+      {toggle && <ExpenseForm />}
       <Output />
     </div>
   );
@@ -17,14 +19,19 @@ function Logo() {
     </h1>
   );
 }
-function Income() {
+function Income({ toggle, onSetToggle }) {
+  function handleToggle() {
+    onSetToggle((t) => !t);
+  }
   return (
     <div className="income">
       <CommissionField>Income</CommissionField>
       <CommissionField>Rideshare commission</CommissionField>
       <CommissionField>Employer commission</CommissionField>
       <CommissionField>Other commission</CommissionField>
-      <Button>Other Expenses</Button>
+      <Button onClick={handleToggle}>
+        {toggle ? "Cancel" : "Other Expenses"}
+      </Button>
     </div>
   );
 }
@@ -57,8 +64,12 @@ function ExpenseForm() {
     </form>
   );
 }
-function Button({ children }) {
-  return <button className="button">{children}</button>;
+function Button({ children, onClick }) {
+  return (
+    <button onClick={onClick} className="button">
+      {children}
+    </button>
+  );
 }
 
 function Output() {
