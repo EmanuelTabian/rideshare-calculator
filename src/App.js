@@ -17,6 +17,25 @@ function Logo() {
     </h1>
   );
 }
-function Income() {}
+function Income() {
+  return (
+    <div>
+      <CommissionField>Income</CommissionField>
+      <CommissionField>Rideshare company commission</CommissionField>
+      <CommissionField>Employer commission</CommissionField>
+      <CommissionField>Other</CommissionField>
+    </div>
+  );
+}
+
+function CommissionField({ children }) {
+  return (
+    <div>
+      <span>{children}</span>
+      <input type="number"></input>
+    </div>
+  );
+}
+
 function ExpenseForm() {}
 function Output() {}
