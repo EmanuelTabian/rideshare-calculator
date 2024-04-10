@@ -1,10 +1,14 @@
-export default function Output({ netIncome, finalIncome }) {
+export default function Output({ netIncome }) {
   return (
     <div className="output">
-      {netIncome ? (
-        <p className="message">🤑 You have earned {netIncome}RON this week!</p>
+      {!netIncome ? (
+        <p>🤑 You have no earnings, add an income value!</p>
+      ) : netIncome > 0 ? (
+        <p className="message"> You have earned {netIncome}RON this week!</p>
       ) : (
-        <p>😎 Write your income value above!</p>
+        <p className="message">
+          😒 You've spent {Math.abs(netIncome)}RON more than you've earned!{" "}
+        </p>
       )}
     </div>
   );
