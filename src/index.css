@@ -16,7 +16,7 @@ html {
 
 .app {
   margin: 8px;
-  max-width: 30em;
+  max-width: 40em;
   border: 2px solid var(--color-light-gray);
   border-radius: 16px;
 }
@@ -46,7 +46,7 @@ html {
 .expense-form > fieldset {
   padding: 8px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   font-size: 1.3rem;
   font-weight: 600;
 }
@@ -78,4 +78,16 @@ fieldset > input {
 
 button:hover {
   background-color: var(--color-button-hover);
+}
+
+.output {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.output > p {
+  font-size: 1.3rem;
+  font-weight: 550;
 }
