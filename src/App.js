@@ -24,6 +24,7 @@ function Income() {
       <CommissionField>Rideshare commission</CommissionField>
       <CommissionField>Employer commission</CommissionField>
       <CommissionField>Other commission</CommissionField>
+      <Button>Other Expenses</Button>
     </div>
   );
 }
@@ -52,10 +53,14 @@ function ExpenseForm() {
         <label>Other:</label>
         <input type="text" />
       </fieldset>
-      <button className="button">Submit</button>
+      <Button>Submit</Button>
     </form>
   );
 }
+function Button({ children }) {
+  return <button className="button">{children}</button>;
+}
+
 function Output() {
   return (
     <div className="output">
