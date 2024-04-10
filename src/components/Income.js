@@ -12,16 +12,10 @@ export default function Income({
   onSetEmplCom,
   otherCom,
   onSetOtherCom,
+  onHandleReset,
 }) {
   function handleToggle() {
     onSetToggle((t) => !t);
-  }
-
-  function handleReset() {
-    onSetIncome("");
-    onSetToggle("");
-    onSetEmplCom("");
-    onSetOtherCom("");
   }
 
   return (
@@ -41,7 +35,7 @@ export default function Income({
           <Button onClick={handleToggle}>
             {toggle ? "Cancel" : " Expenses"}
           </Button>
-          <Button onClick={handleReset}>Reset</Button>
+          <Button onClick={onHandleReset}>Reset</Button>
         </div>
       )}
     </div>

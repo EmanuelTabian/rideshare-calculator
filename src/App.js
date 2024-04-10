@@ -28,6 +28,16 @@ export default function App() {
     setToggle(false);
   }
 
+  function handleReset() {
+    setIncome("");
+    setToggle("");
+    setEmplCom("");
+    setOtherCom("");
+    setGasExp("");
+    setMealsExp("");
+    setOtherExp("");
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -42,6 +52,7 @@ export default function App() {
         onSetEmplCom={setEmplCom}
         otherCom={otherCom}
         onSetOtherCom={setOtherCom}
+        onHandleReset={handleReset}
       />
       {toggle && (
         <ExpenseForm
