@@ -33,7 +33,7 @@ export default function Income({
       {income && (
         <div>
           <Button onClick={handleToggle}>
-            {toggle ? "Cancel" : " Expenses"}
+            {toggle ? "Close" : " Expenses"}
           </Button>
           <Button onClick={onHandleReset}>Reset</Button>
         </div>

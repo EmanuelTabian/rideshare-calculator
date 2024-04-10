@@ -1,7 +1,5 @@
-import Button from "./Button";
 import ExpenseField from "./ExpenseField";
 export default function ExpenseForm({
-  onSetToggle,
   gasExp,
   onSetGasExp,
   mealsExp,
@@ -20,8 +18,6 @@ export default function ExpenseForm({
       <ExpenseField value={otherExp} setValue={onSetOtherExp}>
         Cash
       </ExpenseField>
-
-      <Button onClick={onSetToggle((e) => !e)}>Close</Button>
     </div>
   );
 }
