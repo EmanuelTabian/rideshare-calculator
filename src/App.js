@@ -8,18 +8,19 @@ export default function App() {
   const [gasExp, setGasExp] = useState("");
   const [mealsExp, setMealsExp] = useState("");
   const [otherExp, setOtherExp] = useState("");
+  const [finalIncome, setFinalIncome] = useState("");
 
   const commissionPerc = rideCom + emplCom;
   const netIncome = Math.round(
     income - (commissionPerc * income) / 100 - otherCom
   );
   const totalExpenses = gasExp + mealsExp + otherExp;
-  console.log(totalExpenses);
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (totalExpenses > income) return;
-    setIncome((i) => i - totalExpenses);
+    setFinalIncome((i) => netIncome - totalExpenses);
+    if (totalExpenses > finalIncome) return;
+    console.log(finalIncome);
   }
 
   return (
@@ -48,7 +49,7 @@ export default function App() {
           onHandleSubmit={handleSubmit}
         />
       )}
-      <Output netIncome={netIncome} />
+      <Output netIncome={netIncome} finalIncome={finalIncome} />
     </div>
   );
 }
@@ -87,7 +88,7 @@ function Income({
         Employer commission (%)
       </CommissionField>
       <CommissionField trackValue={otherCom} setValue={onSetOtherCom}>
-        Cash
+        Other Commission
       </CommissionField>
       <Button onClick={handleToggle}>
         {toggle ? "Cancel" : "Other Expenses"}
@@ -140,7 +141,7 @@ function ExpenseForm({
         Meals
       </ExpenseField>
       <ExpenseField value={otherExp} setValue={onSetOtherExp}>
-        Other
+        Cash
       </ExpenseField>
 
       <Button>Submit</Button>
@@ -169,13 +170,12 @@ function Button({ children, onClick }) {
   );
 }
 
-function Output({ netIncome, incomeWithExp }) {
+function Output({ netIncome, finalIncome }) {
   return (
     <div className="output">
       {netIncome ? (
         <p className="message">
-          🤑 You have earned {incomeWithExp ? incomeWithExp : netIncome}$ this
-          week!
+          🤑 You have earned {finalIncome ? finalIncome : netIncome}$ this week!
         </p>
       ) : (
         <p>😎 Write your income value above!</p>
