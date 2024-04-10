@@ -1,10 +1,17 @@
 import { useState } from "react";
 export default function App() {
   const [toggle, setToggle] = useState(false);
+  const [income, setIncome] = useState(0);
+
   return (
     <div className="app">
       <Logo />
-      <Income toggle={toggle} onSetToggle={setToggle} />
+      <Income
+        income={income}
+        OnSetIncome={setIncome}
+        toggle={toggle}
+        onSetToggle={setToggle}
+      />
       {toggle && <ExpenseForm />}
       <Output />
     </div>
@@ -19,19 +26,34 @@ function Logo() {
     </h1>
   );
 }
-function Income({ toggle, onSetToggle }) {
+
+function Income({ toggle, onSetToggle, income, OnSetIncome }) {
   function handleToggle() {
     onSetToggle((t) => !t);
   }
+  console.log(income);
   return (
     <div className="income">
-      <CommissionField>Income</CommissionField>
+      <IncomeValue income={income} OnSetIncome={OnSetIncome} />
       <CommissionField>Rideshare commission</CommissionField>
       <CommissionField>Employer commission</CommissionField>
       <CommissionField>Other commission</CommissionField>
       <Button onClick={handleToggle}>
         {toggle ? "Cancel" : "Other Expenses"}
       </Button>
+    </div>
+  );
+}
+
+function IncomeValue({ income, OnSetIncome }) {
+  return (
+    <div>
+      <span>Income</span>
+      <input
+        type="text"
+        value={income}
+        onChange={(e) => OnSetIncome(+e.target.value)}
+      />
     </div>
   );
 }
