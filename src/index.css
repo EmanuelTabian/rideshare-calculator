@@ -1,1 +1,32 @@
+:root {
+  --color-text-secondary: #34d186;
+  --color-light-gray: #bfbfbf;
+}
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.app {
+  margin: 8px;
+  max-width: 30em;
+  border: 2px solid var(--color-light-gray);
+  border-radius: 16px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
+.logo-color {
+  color: var(--color-text-secondary);
+}
