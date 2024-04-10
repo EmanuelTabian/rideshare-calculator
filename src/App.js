@@ -50,4 +50,10 @@ function ExpenseForm() {
     </form>
   );
 }
-function Output() {}
+function Output() {
+  return (
+    <div>
+      <p>🤑 You have earned 250$ this week!</p>
+    </div>
+  );
+}
