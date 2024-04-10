@@ -1,7 +1,10 @@
 import { useState } from "react";
 export default function App() {
   const [toggle, setToggle] = useState(false);
-  const [income, setIncome] = useState(0);
+  const [income, setIncome] = useState("");
+  const [rideCom, setRideCom] = useState("");
+  const [emplCom, setEmplCom] = useState("");
+  const [otherCom, setOtherCom] = useState("");
 
   return (
     <div className="app">
@@ -11,6 +14,12 @@ export default function App() {
         OnSetIncome={setIncome}
         toggle={toggle}
         onSetToggle={setToggle}
+        rideCom={rideCom}
+        onSetRideCom={setRideCom}
+        emplCom={emplCom}
+        onSetEmplCom={setEmplCom}
+        otherCom={otherCom}
+        onSetOtherCom={setOtherCom}
       />
       {toggle && <ExpenseForm />}
       <Output />
@@ -27,17 +36,33 @@ function Logo() {
   );
 }
 
-function Income({ toggle, onSetToggle, income, OnSetIncome }) {
+function Income({
+  toggle,
+  onSetToggle,
+  income,
+  OnSetIncome,
+  rideCom,
+  onSetRideCom,
+  emplCom,
+  onSetEmplCom,
+  otherCom,
+  onSetOtherCom,
+}) {
   function handleToggle() {
     onSetToggle((t) => !t);
   }
-  console.log(income);
   return (
     <div className="income">
       <IncomeValue income={income} OnSetIncome={OnSetIncome} />
-      <CommissionField>Rideshare commission</CommissionField>
-      <CommissionField>Employer commission</CommissionField>
-      <CommissionField>Other commission</CommissionField>
+      <CommissionField trackValue={rideCom} setValue={onSetRideCom}>
+        Rideshare commission (%)
+      </CommissionField>
+      <CommissionField trackValue={emplCom} setValue={onSetEmplCom}>
+        Employer commission (%)
+      </CommissionField>
+      <CommissionField trackValue={otherCom} setValue={onSetOtherCom}>
+        Other commission
+      </CommissionField>
       <Button onClick={handleToggle}>
         {toggle ? "Cancel" : "Other Expenses"}
       </Button>
@@ -58,11 +83,15 @@ function IncomeValue({ income, OnSetIncome }) {
   );
 }
 
-function CommissionField({ children }) {
+function CommissionField({ children, trackValue, setValue }) {
   return (
     <div>
       <span>{children}</span>
-      <input type="text" />
+      <input
+        type="text"
+        value={trackValue}
+        onChange={(e) => setValue(+e.target.value)}
+      />
     </div>
   );
 }
