@@ -13,6 +13,14 @@ export default function App() {
   const netIncome = Math.round(
     income - (commissionPerc * income) / 100 - otherCom
   );
+  const totalExpenses = gasExp + mealsExp + otherExp;
+  console.log(totalExpenses);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (totalExpenses > income) return;
+    setIncome((i) => i - totalExpenses);
+  }
 
   return (
     <div className="app">
@@ -37,6 +45,7 @@ export default function App() {
           onSetMealsExp={setMealsExp}
           otherExp={otherExp}
           onSetOtherExp={setOtherExp}
+          onHandleSubmit={handleSubmit}
         />
       )}
       <Output netIncome={netIncome} />
@@ -120,13 +129,10 @@ function ExpenseForm({
   onSetMealsExp,
   otherExp,
   onSetOtherExp,
+  onHandleSubmit,
 }) {
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
   return (
-    <form className="expense-form" onSubmit={handleSubmit}>
+    <form className="expense-form" onSubmit={onHandleSubmit}>
       <ExpenseField value={gasExp} setValue={onSetGasExp}>
         Gas
       </ExpenseField>
@@ -149,7 +155,7 @@ function ExpenseField({ children, value, setValue }) {
       <input
         type="number"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setValue(+e.target.value)}
       />
     </fieldset>
   );
@@ -163,11 +169,14 @@ function Button({ children, onClick }) {
   );
 }
 
-function Output({ netIncome }) {
+function Output({ netIncome, incomeWithExp }) {
   return (
     <div className="output">
       {netIncome ? (
-        <p className="message">🤑 You have earned {netIncome}$ this week!</p>
+        <p className="message">
+          🤑 You have earned {incomeWithExp ? incomeWithExp : netIncome}$ this
+          week!
+        </p>
       ) : (
         <p>😎 Write your income value above!</p>
       )}
