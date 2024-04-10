@@ -7,7 +7,9 @@ export default function App() {
   const [otherCom, setOtherCom] = useState("");
 
   const commissionPerc = rideCom + emplCom;
-  const netIncome = income - (commissionPerc * income) / 100 - otherCom;
+  const netIncome = Math.round(
+    income - (commissionPerc * income) / 100 - otherCom
+  );
 
   return (
     <div className="app">
@@ -25,7 +27,7 @@ export default function App() {
         onSetOtherCom={setOtherCom}
       />
       {toggle && <ExpenseForm />}
-      <Output />
+      <Output netIncome={netIncome} />
     </div>
   );
 }
@@ -64,7 +66,7 @@ function Income({
         Employer commission (%)
       </CommissionField>
       <CommissionField trackValue={otherCom} setValue={onSetOtherCom}>
-        Other commission
+        Cash
       </CommissionField>
       <Button onClick={handleToggle}>
         {toggle ? "Cancel" : "Other Expenses"}
@@ -78,7 +80,7 @@ function IncomeValue({ income, OnSetIncome }) {
     <div>
       <span>App Income</span>
       <input
-        type="text"
+        type="number"
         value={income}
         onChange={(e) => OnSetIncome(+e.target.value)}
       />
@@ -91,7 +93,7 @@ function CommissionField({ children, trackValue, setValue }) {
     <div>
       <span>{children}</span>
       <input
-        type="text"
+        type="number"
         value={trackValue}
         onChange={(e) => setValue(+e.target.value)}
       />
@@ -104,15 +106,15 @@ function ExpenseForm() {
     <form className="expense-form">
       <fieldset>
         <label>Gas:</label>
-        <input type="text" />
+        <input type="number" />
       </fieldset>
       <fieldset>
         <label>Meals:</label>
-        <input type="text" />
+        <input type="number" />
       </fieldset>
       <fieldset>
         <label>Other:</label>
-        <input type="text" />
+        <input type="number" />
       </fieldset>
       <Button>Submit</Button>
     </form>
@@ -126,10 +128,14 @@ function Button({ children, onClick }) {
   );
 }
 
-function Output() {
+function Output({ netIncome }) {
   return (
     <div className="output">
-      <p className="message">🤑 You have earned 250$ this week!</p>
+      {netIncome ? (
+        <p className="message">🤑 You have earned {netIncome}$ this week!</p>
+      ) : (
+        <p>😎 Write your income value above!</p>
+      )}
     </div>
   );
 }
