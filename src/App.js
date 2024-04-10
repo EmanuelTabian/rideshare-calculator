@@ -32,10 +32,22 @@ function CommissionField({ children }) {
   return (
     <div>
       <span>{children}</span>
-      <input type="number"></input>
+      <input type="text" />
     </div>
   );
 }
 
-function ExpenseForm() {}
+function ExpenseForm() {
+  return (
+    <form>
+      <label>Gas:</label>
+      <input type="text" />
+      <label>Meals:</label>
+      <input type="text" />
+      <label>Other:</label>
+      <input type="text" />
+      <button>Submit</button>
+    </form>
+  );
+}
 function Output() {}
