@@ -14,7 +14,7 @@ export default function App() {
   const netIncome = Math.round(
     income - (commissionPerc * income) / 100 - otherCom
   );
-  const totalExpenses = gasExp + mealsExp + otherExp;
+  const totalExpenses = Number(gasExp) + Number(mealsExp) + Number(otherExp);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -96,12 +96,14 @@ function Income({
       <CommissionField trackValue={otherCom} setValue={onSetOtherCom}>
         Other Commission
       </CommissionField>
-      <div>
-        <Button onClick={handleToggle}>
-          {toggle ? "Cancel" : " Expenses"}
-        </Button>
-        <Button onClick={handleReset}>Reset</Button>
-      </div>
+      {income && (
+        <div>
+          <Button onClick={handleToggle}>
+            {toggle ? "Cancel" : " Expenses"}
+          </Button>
+          <Button onClick={handleReset}>Reset</Button>
+        </div>
+      )}
     </div>
   );
 }
