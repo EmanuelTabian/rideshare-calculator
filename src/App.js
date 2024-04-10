@@ -1,70 +1,64 @@
+import { useState } from "react";
+import Logo from "./components/Logo";
+import Income from "./components/Income";
+import ExpenseForm from "./components/ExpenseForm";
+import Output from "./components/Output";
+
 export default function App() {
+  const [toggle, setToggle] = useState(false);
+  const [income, setIncome] = useState("");
+  const [rideCom, setRideCom] = useState(25);
+  const [emplCom, setEmplCom] = useState("");
+  const [otherCom, setOtherCom] = useState("");
+  const [gasExp, setGasExp] = useState("");
+  const [mealsExp, setMealsExp] = useState("");
+  const [otherExp, setOtherExp] = useState("");
+  // const [finalIncome, setFinalIncome] = useState("");
+
+  const commissionPerc = rideCom + emplCom;
+  const totalExpenses = Number(gasExp) + Number(mealsExp) + Number(otherExp);
+  const netIncome = Math.round(
+    income - (commissionPerc * income) / 100 - otherCom - totalExpenses
+  );
+
+  function handleReset() {
+    setIncome("");
+    setToggle("");
+    setEmplCom("");
+    setOtherCom("");
+    setGasExp("");
+    setMealsExp("");
+    setOtherExp("");
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Income />
-      <ExpenseForm />
-      <Output />
-    </div>
-  );
-}
-
-function Logo() {
-  return (
-    <h1 className="logo">
-      <span className="logo-color">RIDESHARE</span>&nbsp;
-      <span>COPILOT</span>
-    </h1>
-  );
-}
-function Income() {
-  return (
-    <div className="income">
-      <CommissionField>Income</CommissionField>
-      <CommissionField>Rideshare commission</CommissionField>
-      <CommissionField>Employer commission</CommissionField>
-      <CommissionField>Other commission</CommissionField>
-      <Button>Other Expenses</Button>
-    </div>
-  );
-}
-
-function CommissionField({ children }) {
-  return (
-    <div>
-      <span>{children}</span>
-      <input type="text" />
-    </div>
-  );
-}
-
-function ExpenseForm() {
-  return (
-    <form className="expense-form">
-      <fieldset>
-        <label>Gas:</label>
-        <input type="text" />
-      </fieldset>
-      <fieldset>
-        <label>Meals:</label>
-        <input type="text" />
-      </fieldset>
-      <fieldset>
-        <label>Other:</label>
-        <input type="text" />
-      </fieldset>
-      <Button>Submit</Button>
-    </form>
-  );
-}
-function Button({ children }) {
-  return <button className="button">{children}</button>;
-}
-
-function Output() {
-  return (
-    <div className="output">
-      <p className="message">🤑 You have earned 250$ this week!</p>
+      <Income
+        income={income}
+        onSetIncome={setIncome}
+        toggle={toggle}
+        onSetToggle={setToggle}
+        rideCom={rideCom}
+        onSetRideCom={setRideCom}
+        emplCom={emplCom}
+        onSetEmplCom={setEmplCom}
+        otherCom={otherCom}
+        onSetOtherCom={setOtherCom}
+        onHandleReset={handleReset}
+      />
+      {toggle && (
+        <ExpenseForm
+          onSetToggle={setToggle}
+          gasExp={gasExp}
+          onSetGasExp={setGasExp}
+          mealsExp={mealsExp}
+          onSetMealsExp={setMealsExp}
+          otherExp={otherExp}
+          onSetOtherExp={setOtherExp}
+        />
+      )}
+      <Output netIncome={netIncome} />
     </div>
   );
 }
