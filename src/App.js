@@ -11,7 +11,7 @@ import ExpenseField from "./components/ExpenseField";
 export default function App() {
   const [toggle, setToggle] = useState(false);
   const [income, setIncome] = useState("");
-  const [rideCom, setRideCom] = useState(25);
+  const [rideCom, setRideCom] = useState("");
   const [emplCom, setEmplCom] = useState("");
   const [otherCom, setOtherCom] = useState("");
   const [gasExp, setGasExp] = useState("");
