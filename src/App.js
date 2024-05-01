@@ -43,24 +43,8 @@ export default function App() {
   return (
     <AppContext.Provider
       value={{
-        toggle,
-        onSetToggle: setToggle,
         income,
         onSetIncome: setIncome,
-        rideCom,
-        onSetRideCom: setRideCom,
-        emplCom,
-        onSetEmplCom: setEmplCom,
-        otherCom,
-        onSetOtherCom: setOtherCom,
-        gasExp,
-        onSetGasExp: setGasExp,
-        mealsExp,
-        onSetMealsExp: setMealsExp,
-        otherExp,
-        onSetOtherExp: setOtherExp,
-        commissionPerc,
-        totalExpenses,
         netIncome,
       }}
     >
@@ -99,7 +83,7 @@ export default function App() {
             </ExpenseField>
           </ExpenseForm>
         )}
-        <Output netIncome={netIncome} />
+        <Output />
       </div>
     </AppContext.Provider>
   );

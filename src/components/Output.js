@@ -1,4 +1,8 @@
-export default function Output({ netIncome }) {
+import { useContext } from "react";
+import { AppContext } from "../App";
+
+export default function Output() {
+  const { netIncome } = useContext(AppContext);
   return (
     <div className="output">
       {!netIncome ? (
