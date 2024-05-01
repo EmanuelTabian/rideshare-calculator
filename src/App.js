@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import Logo from "./components/Logo";
 import Income from "./components/Income";
 import ExpenseForm from "./components/ExpenseForm";
@@ -7,6 +7,8 @@ import IncomeValue from "./components/IncomeValue";
 import CommissionField from "./components/CommissionField";
 import Button from "./components/Button";
 import ExpenseField from "./components/ExpenseField";
+
+const AppContext = createContext();
 
 export default function App() {
   const [toggle, setToggle] = useState(false);
@@ -39,42 +41,68 @@ export default function App() {
   }
 
   return (
-    <div className="app">
-      <Logo />
-      <Income>
-        <IncomeValue income={income} onSetIncome={setIncome} />
-        <CommissionField trackValue={rideCom} setValue={setRideCom}>
-          Rideshare commission (%)
-        </CommissionField>
-        <CommissionField trackValue={emplCom} setValue={setEmplCom}>
-          Employer commission (%)
-        </CommissionField>
-        <CommissionField trackValue={otherCom} setValue={setOtherCom}>
-          Other Commission
-        </CommissionField>
-        {income && (
-          <div>
-            <Button onClick={handleToggle}>
-              {toggle ? "Close" : " Expenses"}
-            </Button>
-            <Button onClick={handleReset}>Reset</Button>
-          </div>
+    <AppContext.Provider
+      value={{
+        toggle,
+        onSetToggle: setToggle,
+        income,
+        onSetIncome: setIncome,
+        rideCom,
+        onSetRideCom: setRideCom,
+        emplCom,
+        onSetEmplCom: setEmplCom,
+        otherCom,
+        onSetOtherCom: setOtherCom,
+        gasExp,
+        onSetGasExp: setGasExp,
+        mealsExp,
+        onSetMealsExp: setMealsExp,
+        otherExp,
+        onSetOtherExp: setOtherExp,
+        commissionPerc,
+        totalExpenses,
+        netIncome,
+      }}
+    >
+      <div className="app">
+        <Logo />
+        <Income>
+          <IncomeValue />
+          <CommissionField trackValue={rideCom} setValue={setRideCom}>
+            Rideshare commission (%)
+          </CommissionField>
+          <CommissionField trackValue={emplCom} setValue={setEmplCom}>
+            Employer commission (%)
+          </CommissionField>
+          <CommissionField trackValue={otherCom} setValue={setOtherCom}>
+            Other Commission
+          </CommissionField>
+          {income && (
+            <div>
+              <Button onClick={handleToggle}>
+                {toggle ? "Close" : " Expenses"}
+              </Button>
+              <Button onClick={handleReset}>Reset</Button>
+            </div>
+          )}
+        </Income>
+        {toggle && (
+          <ExpenseForm>
+            <ExpenseField value={gasExp} setValue={setGasExp}>
+              Gas
+            </ExpenseField>
+            <ExpenseField value={mealsExp} setValue={setMealsExp}>
+              Meals
+            </ExpenseField>
+            <ExpenseField value={otherExp} setValue={setOtherExp}>
+              Cash
+            </ExpenseField>
+          </ExpenseForm>
         )}
-      </Income>
-      {toggle && (
-        <ExpenseForm>
-          <ExpenseField value={gasExp} setValue={setGasExp}>
-            Gas
-          </ExpenseField>
-          <ExpenseField value={mealsExp} setValue={setMealsExp}>
-            Meals
-          </ExpenseField>
-          <ExpenseField value={otherExp} setValue={setOtherExp}>
-            Cash
-          </ExpenseField>
-        </ExpenseForm>
-      )}
-      <Output netIncome={netIncome} />
-    </div>
+        <Output netIncome={netIncome} />
+      </div>
+    </AppContext.Provider>
   );
 }
+
+export { AppContext };
