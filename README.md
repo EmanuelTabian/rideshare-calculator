@@ -2,7 +2,7 @@
 
 ## Description
 
-An app that helps drivers calculate their weekly net income.
+An app that helps drivers calculate their weekly net income
 
 ### Overview
 
