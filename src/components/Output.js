@@ -1,4 +1,7 @@
-export default function Output({ netIncome }) {
+import { UseApp } from "../contexts/AppContext";
+
+export default function Output() {
+  const { netIncome } = UseApp();
   return (
     <div className="output">
       {!netIncome ? (

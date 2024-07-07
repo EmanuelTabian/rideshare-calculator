@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Logo from "./components/Logo";
 import Income from "./components/Income";
 import ExpenseForm from "./components/ExpenseForm";
@@ -8,21 +7,27 @@ import CommissionField from "./components/CommissionField";
 import Button from "./components/Button";
 import ExpenseField from "./components/ExpenseField";
 
-export default function App() {
-  const [toggle, setToggle] = useState(false);
-  const [income, setIncome] = useState("");
-  const [rideCom, setRideCom] = useState("");
-  const [emplCom, setEmplCom] = useState("");
-  const [otherCom, setOtherCom] = useState("");
-  const [gasExp, setGasExp] = useState("");
-  const [mealsExp, setMealsExp] = useState("");
-  const [otherExp, setOtherExp] = useState("");
+import { UseApp } from "./contexts/AppContext";
 
-  const commissionPerc = rideCom + emplCom;
-  const totalExpenses = Number(gasExp) + Number(mealsExp) + Number(otherExp);
-  const netIncome = Math.round(
-    income - (commissionPerc * income) / 100 - otherCom - totalExpenses
-  );
+export default function App() {
+  const {
+    income,
+    setIncome,
+    toggle,
+    setToggle,
+    rideCom,
+    setRideCom,
+    emplCom,
+    setEmplCom,
+    otherCom,
+    setOtherCom,
+    gasExp,
+    setGasExp,
+    mealsExp,
+    setMealsExp,
+    otherExp,
+    setOtherExp,
+  } = UseApp();
 
   function handleReset() {
     setIncome("");
@@ -42,7 +47,7 @@ export default function App() {
     <div className="app">
       <Logo />
       <Income>
-        <IncomeValue income={income} onSetIncome={setIncome} />
+        <IncomeValue />
         <CommissionField trackValue={rideCom} setValue={setRideCom}>
           Rideshare commission (%)
         </CommissionField>
@@ -74,7 +79,7 @@ export default function App() {
           </ExpenseField>
         </ExpenseForm>
       )}
-      <Output netIncome={netIncome} />
+      <Output />
     </div>
   );
 }
