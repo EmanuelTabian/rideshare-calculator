@@ -18,7 +18,7 @@ function UseAppContext({ children }) {
   );
 
   return (
-    <AppContext
+    <AppContext.Provider
       value={{
         income,
         setIncome,
@@ -42,7 +42,7 @@ function UseAppContext({ children }) {
       }}
     >
       {children}
-    </AppContext>
+    </AppContext.Provider>
   );
 }
 

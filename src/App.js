@@ -1,4 +1,3 @@
-import { createContext, useContext, useState } from "react";
 import Logo from "./components/Logo";
 import Income from "./components/Income";
 import ExpenseForm from "./components/ExpenseForm";
@@ -8,18 +7,27 @@ import CommissionField from "./components/CommissionField";
 import Button from "./components/Button";
 import ExpenseField from "./components/ExpenseField";
 
-import { UseAppContext, UseApp } from "./contexts/AppContext";
+import { UseApp } from "./contexts/AppContext";
 
 export default function App() {
-  const [rideCom, setRideCom] = useState("");
-  const [emplCom, setEmplCom] = useState("");
-  const [otherCom, setOtherCom] = useState("");
-  const [gasExp, setGasExp] = useState("");
-  const [mealsExp, setMealsExp] = useState("");
-  const [otherExp, setOtherExp] = useState("");
-  const [toggle, setToggle] = useState(false);
-
-  const { income, setIncome } = UseApp();
+  const {
+    income,
+    setIncome,
+    toggle,
+    setToggle,
+    rideCom,
+    setRideCom,
+    emplCom,
+    setEmplCom,
+    otherCom,
+    setOtherCom,
+    gasExp,
+    setGasExp,
+    mealsExp,
+    setMealsExp,
+    otherExp,
+    setOtherExp,
+  } = UseApp();
 
   function handleReset() {
     setIncome("");
