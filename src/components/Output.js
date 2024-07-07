@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { AppContext } from "../App";
+import { UseApp } from "../contexts/AppContext";
 
 export default function Output() {
-  const { netIncome } = useContext(AppContext);
+  const { netIncome } = UseApp();
   return (
     <div className="output">
       {!netIncome ? (

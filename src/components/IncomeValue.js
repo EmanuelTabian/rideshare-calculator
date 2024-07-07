@@ -1,9 +1,7 @@
-import { useContext } from "react";
-
-import { AppContext } from "../App";
+import { UseApp } from "../contexts/AppContext";
 
 export default function IncomeValue() {
-  const { income, onSetIncome } = useContext(AppContext);
+  const { income, onSetIncome } = UseApp;
   console.log(income);
   return (
     <div>
