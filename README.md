@@ -1,14 +1,27 @@
-# Rideshare Copilot
+# Rideshare Calculator
+
+[![Live Version](https://img.shields.io/badge/Live%20Version-Click%20Here-brightgreen)](https://calculator.rideshare-copilot.eu)
 
 ## Description
 
-An app that helps drivers calculate their weekly net income.
+This is the incipient version of the [Rideshare Copilot ](https://www.rideshare-copilot.eu/) app. You can access the repository [here](https://github.com/EmanuelTabian/rideshare-copilot-v2).
 
-### Overview
+This app features a calculator that takes the gross income as an input and performs several calculations to output the net income based on decimal and percentage values.
 
-The app takes a value input and based on it can calculate different percentages and return the net income earned by a driver. It also features a section for adding different expenses done throughout the week.
+## Overview
 
-### Prerequisite
+The Rideshare Copilot app is a Single Page Application (SPA) designed to help rideshare drivers calculate their earnings. The app provides several input fields and renders an output message displaying the net income.
+
+## Features
+
+1. **App Income**: Input field for the total income before any deductions.
+2. **Commission Fields**: Two input fields for entering commission percentages. These percentages are summed to calculate the total commission. For example, entering 5% in the first field and 10% in the second field results in a total commission of 15%.
+3. **Other Commission**: An input field for entering a fixed commission amount in currency, not a percentage.
+4. **Other Expenses**: Input fields for additional expenses such as gas, meals, or cash expenses that can be subtracted from the gross income.
+
+The app then calculates the net income by subtracting the total commissions and other expenses from the gross income and renders a message. The app also accounts for negative values.
+
+## Prerequisites
 
 1. Download and install [Node.js](https://nodejs.org/en/download) latest version.
 
