@@ -27,15 +27,16 @@ The Rideshare Copilot app is a Single Page Application (SPA) made with **React.j
 
 The app then calculates the net income by subtracting the total commissions and other expenses from the gross income and renders a message. The app also accounts for negative values.
 
-## Prerequisites
+## Setup and installation
 
-1. Download and install [Node.js](https://nodejs.org/en/download) latest version.
+### Prerequisites
 
-1. Make sure you have installed the latest npm version.
+- **Node.js**: Install Node.js from [nodejs.org](https://nodejs.org/). This project requires Node.js version 14 or higher.
+- **npm or Yarn**: Ensure you have npm (comes with Node.js) or Yarn installed for managing dependencies.
 
-```sh
-   npm install -g npm
-```
+Once you have these prerequisites installed, you can proceed with the installation steps.
+
+### installation
 
 ## Installation
 
