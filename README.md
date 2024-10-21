@@ -15,7 +15,7 @@ The Rideshare Copilot app is a Single Page Application (SPA) made with **React.j
 ## Table of contents
 
 - [Features](#features)
-- [Setup and Installation](#installation)
+- [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
 - [Deployment](#deployment)
 
