@@ -17,6 +17,7 @@ The Rideshare Copilot app is a Single Page Application (SPA) made with **React.j
 - [Features](#features)
 - [Setup and Installation](#installation)
 - [Usage](#usage)
+- [Deployment](#deployment)
 
 ## Features
 
@@ -36,32 +37,39 @@ The app then calculates the net income by subtracting the total commissions and 
 
 Once you have these prerequisites installed, you can proceed with the installation steps.
 
-### installation
+### Installation
 
-## Installation
+1. **Clone the Repository**:
 
-Access the deployed static version of the a [Ridesharing Copilot](https://rideshare-copilot.onrender.com/) app or follow the insturctions.
+   ```bash
+   git clone https://github.com/EmanuelTabian/rideshare-copilot.git
+   cd rideshare-copilot
+   ```
 
-<details><summary><b>Show instructions</b></summary>
+2. **Install Dependencies**:
 
-1. Clone the repository into your local machine or manually download the zip file.
+   - Using npm:
 
-```sh
-   git clone https://github.com/ai/size-limit.git
-```
+   ```bash
+   npm install
+   ```
 
-2. Make sure you're in the project's directory and start the React.js app.
+   - Or using Yarn:
 
-```sh
-   npm run start
-```
-
-</details>
+   ```bash
+   yarn install
+   ```
 
 ## Usage
 
+- Run the project:
+  ```bash
+  npm start
+  ```
+
+```
 1. Input the income value displayed on the app.
-   NOTE: Some of the ridesharing apps already subtract their commission (e.g. 25%) when displaying the income.
+NOTE: Some of the ridesharing apps already subtract their commission (e.g. 25%) when displaying the income.
 
 2. If necessary input the Rideshare company comission.
 
@@ -70,3 +78,4 @@ Access the deployed static version of the a [Ridesharing Copilot](https://ridesh
 4. Add any other expenses made throughout the week.
 
 5. Analyze the your below listed net income.
+```
