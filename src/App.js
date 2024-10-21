@@ -32,6 +32,7 @@ export default function App() {
   function handleReset() {
     setIncome("");
     setToggle("");
+    setRideCom("");
     setEmplCom("");
     setOtherCom("");
     setGasExp("");
@@ -55,7 +56,7 @@ export default function App() {
           Employer commission (%)
         </CommissionField>
         <CommissionField trackValue={otherCom} setValue={setOtherCom}>
-          Other Commission
+          Other commission
         </CommissionField>
         {income && (
           <div>
