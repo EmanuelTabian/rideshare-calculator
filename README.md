@@ -5,6 +5,8 @@
 ## Description
 
 This is the initial version of the [Rideshare Copilot ](https://www.rideshare-copilot.eu/) app. You can access the repository [here](https://github.com/EmanuelTabian/rideshare-copilot-v2).
+=======
+An app that helps drivers calculate their weekly net income
 
 This app features a calculator that takes the gross income as an input and performs several calculations to output the net income based on decimal and percentage values.
 
