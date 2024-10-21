@@ -80,6 +80,15 @@ npm start
 
 - Add any other expenses incurred throughout the week.
 
-- Review the calculated net income.
+- Review the output.
 
 ### Output
+
+When you first open the app, it will display a message indicating that you have no earnings and prompting you to add an income value.
+
+Based on the calculations, the output message will vary:
+
+- If your net income is positive, the app will display: **You have earned X this week!**
+- If your net income is negative, the app will display: **You have spent X more than you've earned!**
+
+Where **X** is the calculated amount based on your inputs.
