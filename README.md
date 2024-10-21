@@ -92,3 +92,24 @@ Based on the calculations, the output message will vary:
 - If your net income is negative, the app will display: **You have spent X more than you've earned!**
 
 Where **X** is the calculated amount based on your inputs.
+
+## Deployment
+
+The Rideshare Copilot app is deployed using [Render](https://render.com/).
+
+### Instructions
+
+1. **Create a Render Account**: Sign up for a free account at [Render](https://render.com/) or login with your Github account.
+
+2. **New Web Service**: In the Render dashboard, click on "New" and select "Web Service".
+
+3. **Connect Repository**: Connect your GitHub repository to Render by following the prompts.
+
+4. **Configure Build and Start Commands**:
+
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+
+5. **Deploy**: Click on "Create Web Service" to deploy your app. Render will automatically build and deploy your app whenever you push changes to the connected repository.
+
+For more detailed instructions, refer to the [Render documentation](https://render.com/docs).
