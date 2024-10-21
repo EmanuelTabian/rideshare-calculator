@@ -1,52 +1,117 @@
-# Rideshare Copilot
+# Rideshare Calculator
+
+[![Live Version](https://img.shields.io/badge/Live%20Version-Click%20Here-brightgreen)](https://calculator.rideshare-copilot.eu)
 
 ## Description
 
+This is the initial version of the [Rideshare Copilot ](https://www.rideshare-copilot.eu/) app. You can access the repository [here](https://github.com/EmanuelTabian/rideshare-copilot-v2).
+=======
 An app that helps drivers calculate their weekly net income
 
-### Overview
+This app features a calculator that takes the gross income as an input and performs several calculations to output the net income based on decimal and percentage values.
 
-The app takes a value input and based on it can calculate different percentages and return the net income earned by a driver. It also features a section for adding different expenses done throughout the week.
+## Overview
 
-### Prerequisite
+The Rideshare Copilot app is a Single Page Application (SPA) made with **React.js**, designed to help rideshare drivers calculate their earnings. The app provides several input fields and renders an output message displaying the net income.
 
-1. Download and install [Node.js](https://nodejs.org/en/download) latest version.
+## Table of contents
 
-1. Make sure you have installed the latest npm version.
+- [Features](#features)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Deployment](#deployment)
 
-```sh
-   npm install -g npm
-```
+## Features
 
-## Installation
+1. **App Income**: Input field for the total income before any deductions.
+2. **Commission Fields**: Two input fields for entering commission percentages. These percentages are summed to calculate the total commission. For example, entering 5% in the first field and 10% in the second field results in a total commission of 15%.
+3. **Other Commission**: An input field for entering a fixed commission amount in currency, not a percentage.
+4. **Other Expenses**: Input fields for additional expenses such as gas, meals, or cash expenses that can be subtracted from the gross income.
 
-Access the deployed static version of the a [Ridesharing Copilot](https://rideshare-copilot.onrender.com/) app or follow the insturctions.
+The app then calculates the net income by subtracting the total commissions and other expenses from the gross income and renders a message. The app also accounts for negative values.
 
-<details><summary><b>Show instructions</b></summary>
+## Setup and installation
 
-1. Clone the repository into your local machine or manually download the zip file.
+### Prerequisites
 
-```sh
-   git clone https://github.com/ai/size-limit.git
-```
+- **Node.js**: Install Node.js from [nodejs.org](https://nodejs.org/). This project requires Node.js version 14 or higher.
+- **npm or Yarn**: Ensure you have npm (comes with Node.js) or Yarn installed for managing dependencies.
 
-2. Make sure you're in the project's directory and start the React.js app.
+Once you have these prerequisites installed, you can proceed with the installation steps.
 
-```sh
-   npm run start
-```
+### Installation
 
-</details>
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/EmanuelTabian/rideshare-copilot.git
+   cd rideshare-copilot
+   ```
+
+2. **Install Dependencies**:
+
+   - Using npm:
+
+   ```bash
+   npm install
+   ```
+
+   - Or using Yarn:
+
+   ```bash
+   yarn install
+   ```
 
 ## Usage
 
-1. Input the income value displayed on the app.
-   NOTE: Some of the ridesharing apps already subtract their commission (e.g. 25%) when displaying the income.
+### Run the project
 
-2. If necessary input the Rideshare company comission.
+```bash
+npm start
+```
 
-3. Input the comission that you're employer takes. (If you're not directly associated with the Rideshare company)
+### Interaction
 
-4. Add any other expenses made throughout the week.
+- Enter the income value displayed on your ridesharing app (e.g. [Uber driver](https://play.google.com/store/apps/details?id=com.ubercab.driver&hl=en&pli=1)).
 
-5. Analyze the your below listed net income.
+  **Note**: Some ridesharing apps may already subtract their commission (e.g., 25%) when displaying the income.
+
+- If applicable, input the commission taken by the rideshare company.
+
+- Input the commission taken by your employer, if you are not directly associated with the rideshare company.
+
+- Add any other expenses incurred throughout the week.
+
+- Review the output.
+
+### Output
+
+When you first open the app, it will display a message indicating that you have no earnings and prompting you to add an income value.
+
+Based on the calculations, the output message will vary:
+
+- If your net income is positive, the app will display: **You have earned X this week!**
+- If your net income is negative, the app will display: **You have spent X more than you've earned!**
+
+Where **X** is the calculated amount based on your inputs.
+
+## Deployment
+
+The Rideshare Copilot app is deployed using [Render](https://render.com/).
+
+### Instructions
+
+1. **Create a Render Account**: Sign up for a free account at [Render](https://render.com/) or login with your Github account.
+
+2. **New Web Service**: In the Render dashboard, click on "New" and select "Web Service".
+
+3. **Connect Repository**: Connect your GitHub repository to Render by following the prompts.
+
+4. **Configure Build and Start Commands**:
+
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+
+5. **Deploy**: Click on "Create Web Service" to deploy your app. Render will automatically build and deploy your app whenever you push changes to the connected repository.
+
+For more detailed instructions, refer to the [Render documentation](https://render.com/docs).
