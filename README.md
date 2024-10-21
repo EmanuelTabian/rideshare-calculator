@@ -4,13 +4,19 @@
 
 ## Description
 
-This is the incipient version of the [Rideshare Copilot ](https://www.rideshare-copilot.eu/) app. You can access the repository [here](https://github.com/EmanuelTabian/rideshare-copilot-v2).
+This is the initial version of the [Rideshare Copilot ](https://www.rideshare-copilot.eu/) app. You can access the repository [here](https://github.com/EmanuelTabian/rideshare-copilot-v2).
 
 This app features a calculator that takes the gross income as an input and performs several calculations to output the net income based on decimal and percentage values.
 
 ## Overview
 
-The Rideshare Copilot app is a Single Page Application (SPA) designed to help rideshare drivers calculate their earnings. The app provides several input fields and renders an output message displaying the net income.
+The Rideshare Copilot app is a Single Page Application (SPA) made with **React.js**, designed to help rideshare drivers calculate their earnings. The app provides several input fields and renders an output message displaying the net income.
+
+## Table of contents
+
+- [Features](#features)
+- [Setup and Installation](#installation)
+- [Usage](#usage)
 
 ## Features
 
