@@ -62,20 +62,24 @@ Once you have these prerequisites installed, you can proceed with the installati
 
 ## Usage
 
-- Run the project:
-  ```bash
-  npm start
-  ```
+### Run the project
 
+```bash
+npm start
 ```
-1. Input the income value displayed on the app.
-NOTE: Some of the ridesharing apps already subtract their commission (e.g. 25%) when displaying the income.
 
-2. If necessary input the Rideshare company comission.
+### Interaction
 
-3. Input the comission that you're employer takes. (If you're not directly associated with the Rideshare company)
+- Enter the income value displayed on your ridesharing app (e.g. [Uber driver](https://play.google.com/store/apps/details?id=com.ubercab.driver&hl=en&pli=1)).
 
-4. Add any other expenses made throughout the week.
+  **Note**: Some ridesharing apps may already subtract their commission (e.g., 25%) when displaying the income.
 
-5. Analyze the your below listed net income.
-```
+- If applicable, input the commission taken by the rideshare company.
+
+- Input the commission taken by your employer, if you are not directly associated with the rideshare company.
+
+- Add any other expenses incurred throughout the week.
+
+- Review the calculated net income.
+
+### Output
