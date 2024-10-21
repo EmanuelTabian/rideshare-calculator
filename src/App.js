@@ -32,6 +32,7 @@ export default function App() {
   function handleReset() {
     setIncome("");
     setToggle("");
+    setRideCom("");
     setEmplCom("");
     setOtherCom("");
     setGasExp("");
